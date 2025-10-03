@@ -441,6 +441,192 @@ section {
     line-height: 1.6;
 }
 
+/* レース計画セクション */
+.race-plan {
+    background: var(--bg-light);
+    padding: 120px 0;
+}
+
+.race-timeline {
+    max-width: 1000px;
+    margin: 0 auto 80px;
+}
+
+.race-year-block {
+    margin-bottom: 64px;
+    background: white;
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+}
+
+.race-year-block.olympic {
+    background: linear-gradient(135deg, rgba(0, 113, 227, 0.05), rgba(0, 208, 132, 0.05));
+    border: 2px solid var(--primary-color);
+}
+
+.year-header {
+    margin-bottom: 32px;
+    padding-bottom: 24px;
+    border-bottom: 2px solid var(--bg-light);
+}
+
+.year-header h3 {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--primary-color);
+    margin-bottom: 8px;
+}
+
+.year-theme {
+    font-size: 1.2rem;
+    color: var(--text-light);
+    font-weight: 500;
+}
+
+.races-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+}
+
+.race-item {
+    display: flex;
+    gap: 20px;
+    padding: 24px;
+    background: var(--bg-light);
+    border-radius: 16px;
+    transition: var(--transition);
+    border-left: 4px solid transparent;
+}
+
+.race-item:hover {
+    transform: translateX(8px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.race-item.highlight {
+    background: linear-gradient(135deg, rgba(0, 113, 227, 0.1), rgba(0, 208, 132, 0.1));
+    border-left-color: var(--accent-color);
+}
+
+.race-item.critical {
+    background: linear-gradient(135deg, rgba(255, 193, 7, 0.15), rgba(255, 152, 0, 0.15));
+    border-left-color: #FFC107;
+}
+
+.race-item.olympic-final {
+    background: linear-gradient(135deg, rgba(0, 113, 227, 0.2), rgba(0, 208, 132, 0.2));
+    border-left-color: var(--primary-color);
+    border-width: 4px;
+}
+
+.race-month {
+    min-width: 80px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.race-info h4 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--text-dark);
+}
+
+.race-location {
+    font-size: 0.95rem;
+    color: var(--text-light);
+    margin-bottom: 12px;
+}
+
+.race-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.race-badge.domestic {
+    background: #E3F2FD;
+    color: #1976D2;
+}
+
+.race-badge.world {
+    background: #E8F5E9;
+    color: #388E3C;
+}
+
+.race-badge.asia {
+    background: #FFF3E0;
+    color: #F57C00;
+}
+
+.race-badge.qualifier {
+    background: #FFF9C4;
+    color: #F57F17;
+}
+
+.race-badge.olympic {
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    color: white;
+    font-weight: 700;
+}
+
+.race-stats-summary {
+    background: white;
+    border-radius: 24px;
+    padding: 48px;
+    text-align: center;
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.08);
+}
+
+.race-stats-summary h3 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 40px;
+    color: var(--text-dark);
+}
+
+.summary-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+}
+
+.summary-item {
+    padding: 32px 24px;
+    background: var(--bg-light);
+    border-radius: 16px;
+    transition: var(--transition);
+}
+
+.summary-item:hover {
+    transform: translateY(-8px);
+    background: var(--bg-white);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+}
+
+.summary-icon {
+    font-size: 3rem;
+    margin-bottom: 16px;
+}
+
+.summary-number {
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--primary-color);
+    margin-bottom: 8px;
+}
+
+.summary-label {
+    font-size: 1rem;
+    color: var(--text-light);
+    font-weight: 500;
+}
+
 /* 企業メリットセクション */
 .benefits {
     background: var(--bg-white);
@@ -898,6 +1084,22 @@ section {
     }
 
     .benefit-card {
+        padding: 32px 24px;
+    }
+
+    .races-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .race-year-block {
+        padding: 24px;
+    }
+
+    .summary-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .race-stats-summary {
         padding: 32px 24px;
     }
 }
