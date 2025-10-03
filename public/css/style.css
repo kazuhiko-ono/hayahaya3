@@ -1,0 +1,918 @@
+/* リセット & ベーススタイル */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #0071E3;
+    --accent-color: #00D084;
+    --text-dark: #1D1D1F;
+    --text-light: #6E6E73;
+    --bg-white: #FFFFFF;
+    --bg-light: #F5F5F7;
+    --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body {
+    font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: var(--text-dark);
+    line-height: 1.8;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* ヒーローセクション */
+.hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)),
+                url('../images/hero/hero-bg.jpg') center/cover no-repeat;
+    color: white;
+    text-align: center;
+}
+
+.hero-content {
+    z-index: 2;
+    padding: 0 24px;
+}
+
+.hero-title {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 900;
+    margin-bottom: 24px;
+    letter-spacing: -0.02em;
+}
+
+.hero-subtitle {
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+    font-weight: 300;
+    margin-bottom: 48px;
+    opacity: 0.95;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 16px 48px;
+    background: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 500;
+    font-size: 1.1rem;
+    transition: var(--transition);
+    box-shadow: 0 8px 24px rgba(0, 113, 227, 0.3);
+}
+
+.cta-button:hover {
+    background: #0077ED;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(0, 113, 227, 0.4);
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 48px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    opacity: 0.8;
+}
+
+.scroll-indicator span {
+    font-size: 0.9rem;
+    margin-bottom: 12px;
+    letter-spacing: 0.1em;
+}
+
+.scroll-line {
+    width: 1px;
+    height: 40px;
+    background: white;
+    animation: scrollAnimation 2s infinite;
+}
+
+@keyframes scrollAnimation {
+    0%, 100% { opacity: 0; transform: translateY(0); }
+    50% { opacity: 1; transform: translateY(10px); }
+}
+
+/* セクション共通スタイル */
+section {
+    padding: 120px 0;
+}
+
+.section-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+}
+
+.section-title.center {
+    text-align: center;
+}
+
+.section-subtitle {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: var(--text-light);
+    margin-bottom: 64px;
+}
+
+.section-subtitle.center {
+    text-align: center;
+}
+
+/* プロフィールセクション */
+.profile {
+    background: var(--bg-white);
+}
+
+.profile-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.profile-image img {
+    width: 100%;
+    border-radius: 24px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+.profile-name {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 24px;
+}
+
+.profile-name-en {
+    display: block;
+    font-size: 1.2rem;
+    color: var(--text-light);
+    font-weight: 400;
+    margin-top: 8px;
+}
+
+.profile-bio {
+    font-size: 1.1rem;
+    line-height: 2;
+    margin-bottom: 48px;
+    color: var(--text-dark);
+}
+
+.achievements {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.achievement-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 24px;
+    background: var(--bg-light);
+    border-radius: 16px;
+    transition: var(--transition);
+}
+
+.achievement-item:hover {
+    transform: translateX(8px);
+    background: #EBEBED;
+}
+
+.achievement-icon {
+    font-size: 2.5rem;
+}
+
+.achievement-text h4 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.achievement-text p {
+    color: var(--text-light);
+    font-size: 0.95rem;
+}
+
+/* ストーリーセクション */
+.story {
+    background: var(--bg-light);
+}
+
+.timeline {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--primary-color), var(--accent-color));
+}
+
+.timeline-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 80px;
+    position: relative;
+}
+
+.timeline-item:nth-child(even) {
+    direction: rtl;
+}
+
+.timeline-item:nth-child(even) > * {
+    direction: ltr;
+}
+
+.timeline-year {
+    text-align: right;
+    padding-right: 48px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.timeline-item:nth-child(even) .timeline-year {
+    text-align: left;
+    padding-right: 0;
+    padding-left: 48px;
+    justify-content: flex-start;
+}
+
+.timeline-content {
+    padding: 32px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+}
+
+.timeline-image {
+    margin-bottom: 20px;
+    border-radius: 12px;
+    overflow: hidden;
+    max-width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.timeline-image img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.timeline-content h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.timeline-content p {
+    color: var(--text-light);
+    line-height: 1.8;
+}
+
+/* ビジョンセクション */
+.vision {
+    background: var(--bg-white);
+}
+
+.vision-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-bottom: 80px;
+}
+
+.vision-card {
+    padding: 48px 32px;
+    background: var(--bg-light);
+    border-radius: 20px;
+    text-align: center;
+    transition: var(--transition);
+}
+
+.vision-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+}
+
+.vision-number {
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--primary-color);
+    margin-bottom: 24px;
+    opacity: 0.3;
+}
+
+.vision-card h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+.vision-card p {
+    color: var(--text-light);
+    line-height: 1.8;
+}
+
+/* ロードマップ */
+.roadmap {
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    padding: 64px;
+    border-radius: 24px;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.roadmap-title {
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 64px;
+}
+
+.roadmap-timeline {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+    position: relative;
+    padding: 0 20px;
+}
+
+.roadmap-item {
+    flex: 1;
+    position: relative;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border-radius: 16px 16px 0 0;
+    padding: 32px 24px;
+    transition: var(--transition);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.roadmap-item:nth-child(1) {
+    height: 200px;
+    margin-bottom: 0;
+}
+
+.roadmap-item:nth-child(2) {
+    height: 280px;
+    margin-bottom: 0;
+}
+
+.roadmap-item:nth-child(3) {
+    height: 360px;
+    margin-bottom: 0;
+}
+
+.roadmap-item:nth-child(4) {
+    height: 440px;
+    margin-bottom: 0;
+}
+
+.roadmap-item:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-8px);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.roadmap-item::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.roadmap-year {
+    font-size: 1.8rem;
+    font-weight: 900;
+    margin-bottom: 16px;
+    padding: 12px 16px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 12px;
+    display: inline-block;
+}
+
+.roadmap-content {
+    text-align: center;
+}
+
+.roadmap-content h4 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.roadmap-content p {
+    font-size: 0.95rem;
+    opacity: 0.9;
+    line-height: 1.6;
+}
+
+/* 企業メリットセクション */
+.benefits {
+    background: var(--bg-white);
+    padding: 120px 0;
+}
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+    margin-bottom: 80px;
+}
+
+.benefit-card {
+    background: var(--bg-light);
+    border-radius: 24px;
+    padding: 48px;
+    position: relative;
+    transition: var(--transition);
+}
+
+.benefit-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+}
+
+.benefit-number {
+    position: absolute;
+    top: 24px;
+    right: 32px;
+    font-size: 4rem;
+    font-weight: 900;
+    color: var(--primary-color);
+    opacity: 0.1;
+}
+
+.benefit-icon {
+    font-size: 3.5rem;
+    margin-bottom: 24px;
+}
+
+.benefit-card h3 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: var(--text-dark);
+}
+
+.benefit-content p {
+    font-size: 1.2rem;
+    color: var(--text-light);
+    margin-bottom: 24px;
+    line-height: 1.8;
+}
+
+.benefit-details {
+    list-style: none;
+    padding-left: 0;
+}
+
+.benefit-details li {
+    padding: 16px 0;
+    padding-left: 40px;
+    position: relative;
+    font-size: 1.1rem;
+    color: var(--text-dark);
+    line-height: 1.8;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.benefit-details li:last-child {
+    border-bottom: none;
+}
+
+.benefit-details li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--accent-color);
+    font-weight: 700;
+    font-size: 1.3rem;
+}
+
+.benefit-details strong {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+.benefits-stats {
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    border-radius: 24px;
+    padding: 64px;
+    text-align: center;
+    color: white;
+}
+
+.benefits-stats h3 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 48px;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+}
+
+.stat-item {
+    padding: 32px 24px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+    transition: var(--transition);
+}
+
+.stat-item:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-4px);
+}
+
+.stat-number {
+    font-size: 3rem;
+    font-weight: 900;
+    margin-bottom: 12px;
+}
+
+.stat-label {
+    font-size: 1rem;
+    opacity: 0.9;
+}
+
+/* パートナーシップセクション */
+.partnership {
+    background: var(--bg-light);
+}
+
+.partnership-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-bottom: 64px;
+}
+
+.partnership-card {
+    padding: 48px 32px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    transition: var(--transition);
+}
+
+.partnership-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.12);
+}
+
+.partnership-icon {
+    font-size: 3rem;
+    margin-bottom: 24px;
+}
+
+.partnership-card h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+.partnership-card p {
+    color: var(--text-light);
+    margin-bottom: 24px;
+    line-height: 1.8;
+}
+
+.partnership-list {
+    list-style: none;
+}
+
+.partnership-list li {
+    padding: 12px 0;
+    padding-left: 28px;
+    position: relative;
+    color: var(--text-dark);
+    font-size: 0.95rem;
+}
+
+.partnership-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--accent-color);
+    font-weight: 700;
+}
+
+.partnership-value {
+    padding: 64px;
+    background: white;
+    border-radius: 24px;
+    text-align: center;
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.08);
+}
+
+.partnership-value h3 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 24px;
+    color: var(--primary-color);
+}
+
+.partnership-promise {
+    font-size: 1.2rem;
+    line-height: 2;
+    color: var(--text-dark);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* ギャラリーセクション */
+.gallery {
+    background: var(--bg-white);
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.gallery-item {
+    aspect-ratio: 1;
+    overflow: hidden;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.gallery-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.2);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* お問い合わせセクション */
+.contact {
+    background: var(--bg-light);
+}
+
+.contact-content {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.contact-message {
+    font-size: 1.2rem;
+    line-height: 2;
+    margin-bottom: 48px;
+    color: var(--text-dark);
+}
+
+.contact-methods {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+    margin-bottom: 48px;
+}
+
+.contact-method {
+    padding: 40px 32px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+}
+
+.contact-icon {
+    font-size: 3rem;
+    margin-bottom: 16px;
+}
+
+.contact-method h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.contact-method a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: var(--transition);
+}
+
+.contact-method a:hover {
+    color: var(--accent-color);
+}
+
+/* フッター */
+.footer {
+    background: var(--text-dark);
+    color: white;
+    padding: 64px 0 32px;
+}
+
+.footer-content {
+    text-align: center;
+}
+
+.footer-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.footer-tagline {
+    font-size: 1rem;
+    opacity: 0.7;
+    margin-bottom: 32px;
+}
+
+.footer-social {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-bottom: 32px;
+}
+
+.footer-social a {
+    color: white;
+    transition: var(--transition);
+}
+
+.footer-social a:hover {
+    color: var(--accent-color);
+    transform: translateY(-4px);
+}
+
+.footer-copyright {
+    font-size: 0.9rem;
+    opacity: 0.6;
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 1024px) {
+    .profile-grid {
+        grid-template-columns: 1fr;
+        gap: 48px;
+    }
+
+    .vision-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .roadmap-timeline {
+        flex-wrap: wrap;
+    }
+
+    .roadmap-item:nth-child(1),
+    .roadmap-item:nth-child(2) {
+        height: 220px;
+    }
+
+    .roadmap-item:nth-child(3),
+    .roadmap-item:nth-child(4) {
+        height: 300px;
+    }
+
+    .partnership-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    section {
+        padding: 80px 0;
+    }
+
+    .timeline::before {
+        left: 24px;
+    }
+
+    .timeline-item {
+        grid-template-columns: 1fr;
+        gap: 0;
+        padding-left: 64px;
+    }
+
+    .timeline-item:nth-child(even) {
+        direction: ltr;
+    }
+
+    .timeline-year {
+        position: absolute;
+        left: -64px;
+        padding-right: 0;
+        writing-mode: vertical-rl;
+        text-orientation: mixed;
+        justify-content: flex-start;
+    }
+
+    .timeline-item:nth-child(even) .timeline-year {
+        padding-left: 0;
+    }
+
+    .roadmap-timeline {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .roadmap-item {
+        height: auto !important;
+        min-height: 180px;
+        border-radius: 16px;
+        margin-bottom: 16px;
+    }
+
+    .roadmap-item::before {
+        display: none;
+    }
+
+    .roadmap {
+        padding: 40px 24px;
+    }
+
+    .contact-methods {
+        grid-template-columns: 1fr;
+    }
+
+    .partnership-value {
+        padding: 40px 24px;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .benefits-stats {
+        padding: 40px 24px;
+    }
+
+    .benefit-card {
+        padding: 32px 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .cta-button {
+        padding: 14px 32px;
+        font-size: 1rem;
+    }
+}
